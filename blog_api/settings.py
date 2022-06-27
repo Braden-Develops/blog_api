@@ -11,7 +11,10 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
 import os
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -90,16 +93,11 @@ DATABASES = {
         'CLIENT': {
             'host': 'localhost',
             'port': 27017,
-            'username': 'bcourtnay',
-            'password': '68852',
+            'username': os.getenv('MONGOUSERNAME'),
+            'password': os.getenv('MONGOPASSWORD'),
         }
     }
 }        
-
-"""'CLIENT': {
-            'host': 'mongodb://bcourtnay:68852@mongo:27017'
-        }"""
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
